@@ -50,6 +50,30 @@ const travelData = {
             ],
             type: "temple"
         }
+    ],
+    countries: [
+        {
+            id: 5,
+            name: "Switzerland",
+            location: "Europe",
+            description: "Discover breathtaking Alpine landscapes, pristine lakes, charming villages, and world-renowned Swiss chocolate and cheese. Perfect for skiing, hiking, and scenic train journeys.",
+            images: [
+                "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?w=800&h=600&fit=crop",
+                "https://images.unsplash.com/photo-1527004013197-933c4bb611b3?w=800&h=600&fit=crop"
+            ],
+            type: "country"
+        },
+        {
+            id: 6,
+            name: "New Zealand",
+            location: "Oceania",
+            description: "Experience diverse landscapes from stunning fjords to geothermal wonders, pristine beaches, and the adventure capital of the world. Home to Maori culture and Lord of the Rings filming locations.",
+            images: [
+                "https://images.unsplash.com/photo-1589802829985-817e51171b92?w=800&h=600&fit=crop",
+                "https://images.unsplash.com/photo-1507699622108-4be3abd695ad?w=800&h=600&fit=crop"
+            ],
+            type: "country"
+        }
     ]
 };
 
@@ -61,6 +85,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Recommendation containers
     const beachContainer = document.getElementById('beachRecommendations');
     const templeContainer = document.getElementById('templeRecommendations');
+    const countryContainer = document.getElementById('countryRecommendations');
 
     // ===========================
     // Initialize Recommendations
@@ -71,6 +96,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (templeContainer) {
         displayRecommendations(travelData.temples, templeContainer);
+    }
+
+    if (countryContainer) {
+        displayRecommendations(travelData.countries, countryContainer);
     }
     // Navigation
     const mobileMenu = document.getElementById('mobile-menu');
@@ -173,7 +202,7 @@ function createDestinationCard(destination) {
 // = Image Carousel =
 // ==================
 function initializeImageCarousel(destinationId) {
-    const allDestinations = [...travelData.beaches, ...(travelData.temples || [])];
+    const allDestinations = [...travelData.beaches, ...(travelData.temples || []), ...(travelData.countries || [])];
     const destination = allDestinations.find(d => d.id === destinationId);
     if (!destination) return;
 
