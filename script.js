@@ -26,6 +26,30 @@ const travelData = {
             ],
             type: "beach"
         }
+    ],
+    temples: [
+        {
+            id: 3,
+            name: "Angkor Wat",
+            location: "Cambodia",
+            description: "The largest religious monument in the world, this magnificent temple complex showcases the pinnacle of Khmer architecture and is a UNESCO World Heritage site.",
+            images: [
+                "https://images.unsplash.com/photo-1528181304800-259b08848526?w=800&h=600&fit=crop",
+                "https://images.unsplash.com/photo-1563245372-f21724e3856d?w=800&h=600&fit=crop"
+            ],
+            type: "temple"
+        },
+        {
+            id: 4,
+            name: "Kyoto Temples",
+            location: "Japan",
+            description: "Explore thousands of sacred Shinto shrines and Buddhist temples, including the iconic Fushimi Inari-taisha with its thousands of vermillion torii gates.",
+            images: [
+                "https://images.unsplash.com/photo-1478436127897-769e1b3f0f36?w=800&h=600&fit=crop",
+                "https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=800&h=600&fit=crop"
+            ],
+            type: "temple"
+        }
     ]
 };
 
@@ -36,12 +60,17 @@ const travelData = {
 document.addEventListener('DOMContentLoaded', function() {
     // Recommendation containers
     const beachContainer = document.getElementById('beachRecommendations');
+    const templeContainer = document.getElementById('templeRecommendations');
 
     // ===========================
-    // Initialize Beach Recommendations
+    // Initialize Recommendations
     // ===========================
     if (beachContainer) {
         displayRecommendations(travelData.beaches, beachContainer);
+    }
+
+    if (templeContainer) {
+        displayRecommendations(travelData.temples, templeContainer);
     }
     // Navigation
     const mobileMenu = document.getElementById('mobile-menu');
@@ -144,7 +173,8 @@ function createDestinationCard(destination) {
 // = Image Carousel =
 // ==================
 function initializeImageCarousel(destinationId) {
-    const destination = travelData.beaches.find(d => d.id === destinationId);
+    const allDestinations = [...travelData.beaches, ...(travelData.temples || [])];
+    const destination = allDestinations.find(d => d.id === destinationId);
     if (!destination) return;
 
     const imageContainer = document.getElementById(`images-${destinationId}`);
