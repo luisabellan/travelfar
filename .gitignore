@@ -1,0 +1,29 @@
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Dependencies (if you add them later)
+node_modules/
+
+# Environment variables
+.env
+.env.local
+
+# Build files (if applicable)
+dist/
+build/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Project management files
+CLAUDE.md
+PLAN.md
